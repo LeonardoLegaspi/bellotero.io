@@ -1,0 +1,90 @@
+@import '../1_helpers/mixins';
+//-----Colors
+$modal-backdrop: rgba(0,0,0,.7) !default;
+
+$modal-header-background: $grey-lightest !default;
+$modal-header-color: $text-primary !default;
+
+$modal-body-background: $white !default;
+
+$modal-footer-color: $text-secondary !default;
+
+//Sizing
+$modal-border-radius: 5px !default;
+$modal-padding-vertical: 20px !default;
+$modal-padding-horizontal: 30px !default;
+
+$modal-top-spacer-mobile: 350px !default;
+$modal-top-spacer-tablet: 200px !default;
+$modal-top-spacer-desktop: 300px !default;
+
+//Typography
+$modal-header-font-size: $font-size-title !default;
+$modal-footer-font-size: $font-size-body !default;
+
+.modal{
+    @extend %reset;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: $modal-backdrop;
+    z-index: 1000;
+    position: fixed;
+    display: none;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-around;
+    &-container{
+        @extend %reset;
+        align-items: center;
+        width: 100%;
+        border-radius: $modal-border-radius;
+        max-width: $tablet;
+        margin: 0 auto;
+        & header{
+            font-size: $modal-header-font-size;
+            color: $modal-header-color;
+            border-top-right-radius: $modal-border-radius;
+            border-top-left-radius: $modal-border-radius;
+            text-align: center;
+        }
+        &-body{
+            background: $modal-body-background;
+            overflow-y: auto;
+            max-height: calc(100vh - #{$modal-top-spacer-mobile});
+            @include tablet{
+                max-height: calc(100vh - #{$modal-top-spacer-tablet});
+            }
+            @include desktop{
+                max-height: calc(100vh - #{$modal-top-spacer-desktop});
+            }
+        }
+        & footer{
+            font-size: $modal-footer-font-size;
+            color: $modal-footer-color;
+            border-bottom-right-radius: $modal-border-radius;
+            border-bottom-left-radius: $modal-border-radius;
+            text-align: center;
+        }
+        & header,
+        & footer{
+            background: $modal-header-background;
+        }
+        & header,
+        & footer,
+        &-body{
+            padding: $modal-padding-vertical $modal-padding-horizontal;
+            align-items: center;
+        }
+    }
+    & .modal-close{
+        @include delete;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+    }
+    &--active{
+        display: flex;
+    }
+}

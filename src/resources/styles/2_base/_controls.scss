@@ -1,0 +1,6 @@
+@import '../1_helpers/mixins';
+
+%control{
+    @include default-bordering;
+    display: inline-flex;
+}

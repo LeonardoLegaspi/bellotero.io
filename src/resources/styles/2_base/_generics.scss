@@ -1,0 +1,32 @@
+@import "../1_helpers/mixins";
+
+html {
+  font-size: $font-size-primary-small;
+  @include tablet {
+    font-size: $font-size-primary-medium;
+  }
+  @include desktop {
+    font-size: $font-size-primary;
+  }
+}
+
+body {
+  @extend %reset;
+  font-family: $font-body;
+  overflow-x: hidden !important;
+  background-color: $scheme-main;
+  max-width: 100vw;
+}
+
+main {
+  width: 100%;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

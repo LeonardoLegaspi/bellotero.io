@@ -1,0 +1,17 @@
+.page_title {
+  width: max-content;
+  font-weight: bold;
+  line-height: 1.8;
+  font-size: 36px;
+  margin-top: 0px;
+  max-width: 80vw;
+  @include desktop {
+    max-width: 400px;
+  }
+
+  & span {
+    padding: 8px 4px;
+    color: $white;
+    background-color: $scheme-secondary;
+  }
+}

@@ -1,0 +1,47 @@
+@import "../3_elements/button";
+
+$filling-button-hover-color: $white !default;
+$filling-button-hover-background: $scheme-secondary;
+
+.filling-button {
+  width: min-content;
+  position: relative;
+  transition: 300ms all;
+  & button {
+    @extend .button;
+    background: transparent;
+    border-radius: 0px;
+    color: inherit;
+    width: max-content;
+    transition: 300ms all;
+    & > * {
+      transition: 300ms all;
+    }
+  }
+  & span {
+    border: none;
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 0%;
+    transition: 450ms all;
+  }
+
+  &:hover {
+    color: $filling-button-hover-color !important;
+    & button {
+      color: $filling-button-hover-color !important;
+      & a {
+        color: $filling-button-hover-color !important;
+      }
+    }
+    & span {
+      left: 0px;
+      width: 100%;
+      background-color: $filling-button-hover-background;
+    }
+  }
+}

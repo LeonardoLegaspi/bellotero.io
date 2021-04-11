@@ -1,0 +1,132 @@
+@import "../2_base/controls";
+//Colors
+$button-color: $black !default;
+$button-background: transparent !default;
+$primary-type-colors: ($scheme-secondary, $white) !default;
+$secondary-type-colors: (
+  $black,
+  $black,
+  $white,
+  $border-color
+) !default; //color, background-hover, contrast, border-color
+//Font
+$button-font-size: $font-size-body !default;
+//Sizes
+$button-padding-vertical: 10px !default;
+$button-padding-horizontal: 20px !default;
+//Name, color, contrast Object
+$button-names: $color-pairs !default;
+
+@mixin darkened-button($background, $color) {
+  @include default-bordering($background);
+  background-color: $background;
+  color: $color;
+  &:hover:not(.inverted) {
+    $hover-color: darken($background, 10%);
+    border-color: $hover-color;
+    background: $hover-color;
+    &.empty {
+      @include is-empty($background);
+    }
+  }
+}
+
+@mixin inverted-button($color, $background, $contrast, $border_color) {
+  border-color: $border_color;
+  @include is-empty($color);
+  &:hover {
+    color: $contrast;
+    background: $background;
+    border-color: $background;
+  }
+}
+
+.button {
+  @extend %control;
+  cursor: pointer;
+  background: $button-background;
+  color: $button-color;
+  font-size: $button-font-size;
+  padding: $button-padding-vertical $button-padding-horizontal;
+  text-align: center;
+  outline: none;
+  transition: $transition-default;
+  //Coloring
+  @each $name, $two-colors in $button-names {
+    $background: nth($two-colors, 1);
+    $color: nth($two-colors, 2);
+    &.#{$name} {
+      @include darkened-button($background, $color);
+    }
+    &.#{$name}-inverted {
+      @include inverted-button($background, $background, $color, $background);
+    }
+  }
+  //Sizing
+  &.full-width {
+    width: 100%;
+    display: inline-block;
+  }
+  &.small {
+    font-size: $font-small;
+  }
+  &.medium {
+    font-size: $font-medium;
+  }
+  &.big {
+    font-size: $font-big;
+  }
+  //Types
+  &.primary-type {
+    $background: nth($primary-type-colors, 1);
+    $color: nth($primary-type-colors, 2);
+    @include darkened-button($background, $color);
+  }
+  &.secondary-type {
+    $color: nth($secondary-type-colors, 1);
+    $background: nth($secondary-type-colors, 2);
+    $contrast: nth($secondary-type-colors, 3);
+    $border: nth($secondary-type-colors, 4);
+    @include inverted-button($color, $background, $contrast, $border);
+  }
+  &.tertiary-type {
+    @extend .button;
+  }
+  //Button With Icon
+  & .icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1em;
+    width: 1em;
+    box-sizing: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    padding: 1px 0px;
+    &:first-child:not(:last-child) {
+      margin-left: calc(-0.5em - 1px);
+      margin-right: 0.25em;
+    }
+    &:last-child:not(:first-child) {
+      margin-left: 0.25em;
+      margin-right: calc(-0.5em - 1px);
+    }
+    & img {
+      object-fit: fill;
+      height: 1em;
+      max-width: 100%;
+      box-sizing: inherit;
+    }
+  }
+  //States
+  &:hover {
+    border-color: $border-color-hover;
+  }
+}
+
+button {
+  & > img {
+    height: 20px;
+    padding-top: 4px;
+  }
+}

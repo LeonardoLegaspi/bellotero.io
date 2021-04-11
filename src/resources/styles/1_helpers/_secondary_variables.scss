@@ -1,0 +1,53 @@
+@import "../1_helpers/variables";
+
+//-----Typography
+//Font types
+$font-body: $font-family-primary !default;
+$font-highlight: $font-family-secondary !default;
+//Font elements sizes
+$font-small: $font-size-note !default;
+$font-medium: $font-size-subtitle !default;
+$font-big: $font-size-title !default;
+
+//----Colors
+//Name, color, contrast Object
+$color-pairs: (
+  "scheme": (
+    $scheme-secondary,
+    $white,
+  ),
+  "success": (
+    $success,
+    $white,
+  ),
+  "fail": (
+    $fail,
+    $white,
+  ),
+  "warning": (
+    $warning,
+    $black,
+  ),
+) !default;
+//Border colors
+$border-color: $grey-lighter !default;
+$border-color-hover: $grey !default;
+//Buttons
+//->Delete
+$cross-color: $white;
+$delete-background: $black;
+$delete-border-radius: 50%;
+//Text
+$text-primary: $black !default;
+$text-secondary: #a5a5a5 !default;
+
+//-----Sizes
+//Borders
+$border-radius: 0px !default;
+$border-width: 2px !default;
+
+//-----Placeholders
+%reset {
+  margin: 0px;
+  padding: 0px;
+}

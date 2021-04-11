@@ -1,0 +1,77 @@
+@import '../1_helpers/mixins';
+//Grid
+$grid-cols-sm: repeat(8, minmax(0, 1fr)) !default;
+$grid-cols-md: repeat(10, minmax(0, 1fr)) !default;
+$grid-cols: repeat(12, minmax(0, 1fr)) !default;
+$columns-number: 1 2 3 4 5 6 7 8 9 10 11 12 !default;
+/*
+Desktop =  12 cols
+Tablet = 10 cols
+Mobile = 8 cols
+*/
+.grid{
+    display: grid;
+    grid-auto-rows: min-content;    
+    gap: 0;
+    grid-template-columns: $grid-cols-sm;
+    @include tablet{
+        grid-template-columns: $grid-cols-md;
+    }
+    @include desktop{
+        grid-template-columns: $grid-cols;
+    }
+}
+@each $column-number in $columns-number{
+    .col-#{$column-number}{
+        @if($column-number >= 8){
+            grid-column: span 8;
+        }
+        @else{
+            grid-column: span $column-number;
+        }
+    }
+}
+@each $column-number in $columns-number{
+    .col-md-#{$column-number}{
+        @if($column-number >= 8){   
+            grid-column: span 8;
+        }
+        @else{
+            grid-column: span $column-number;
+        }
+    }
+}
+@each $column-number in $columns-number{
+    @if($column-number <= 8){
+        .col-sm-#{$column-number}{   
+            grid-column: span $column-number;
+        }
+    }
+}
+@include tablet{
+    @each $column-number in $columns-number{
+        .col-#{$column-number}{
+            @if($column-number >= 10){
+                grid-column: span 10;
+            }
+            @else{
+                grid-column: span $column-number;
+            }
+        }
+    }
+    @each $column-number in $columns-number{
+        @if($column-number <= 10){
+            .col-md-#{$column-number}{
+                grid-column: span $column-number ;
+            }
+        }
+    }
+    
+}    
+@include desktop{
+    @each $column-number in $columns-number{
+        .col-#{$column-number}{
+            grid-column: span $column-number;
+        }
+    }
+}

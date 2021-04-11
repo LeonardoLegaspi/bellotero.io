@@ -1,0 +1,87 @@
+@import './secondary_variables';
+//Colors
+//----->Buttons
+/*
+FIXME Is this useful? or limits to buttons with colors on Variables?
+*/
+@mixin is-empty($color){ 
+  background: transparent;
+  color: $color
+}
+@mixin delete{
+  $size : 25px;
+  cursor: pointer;
+  position: relative;
+  background: rgba($color: $delete-background, $alpha: .25);
+  border:  none;
+  width: $size;
+  height: $size;
+  min-width: $size;
+  max-width: $size;
+  min-height: $size;
+  max-height: $size;
+  border-radius: $delete-border-radius;
+  outline: none;
+  transition: 200ms all;
+  &:before, 
+  &:after{
+      content: "";
+      position: absolute; 
+      background-color: $cross-color;
+      display: block;
+      top: 50%;
+      left: 50%;    
+      transform: translateX(-50%) translateY(-50%) rotate(45deg)
+  }
+  &::before{
+      height: 2px;
+      width: 75%;
+  }
+  &::after{
+      height: 75%;
+      width: 2px;
+  }
+  &:hover{
+      background: rgba($color: #000000, $alpha: .55);
+  }
+}
+
+//Border
+@mixin default-bordering($color: $border-color){
+  border: $border-width solid $color;
+  border-radius: $border-radius;
+}
+
+//Responsiveness
+//The value in these variables are the values that each
+//device has as a minimum width, meaning is the minimum 
+//size a device can take.
+@mixin tablet {
+    @media only screen and (min-width: $tablet) {
+      @content;
+    }
+}
+
+@mixin touch {
+  @media only screen and (max-width: $desktop){
+    @content;
+  }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: $desktop) {
+      @content;
+    }
+}
+
+@mixin widescreen {
+    @media only screen and (min-width: $widescreen) {
+      @content;
+    }
+}
+
+@mixin full-hd {
+  @media only screen and (min-width: $full-hd) {
+    @content;
+  }
+}
