@@ -6,7 +6,7 @@ payable and smart, business-transforming insights.
 # READY TO TRY BELLOTERO.IO?
 
 Let's begin.
-The first thing you need to do is get the code. For this, make a folder in your computer, open a CLI in the location of the folder you just created and hold on thight. Run this command in the CLI:
+The first thing you need to do is get the code. For this, make a folder in your computer, open a CLI in the location of the folder you just created and hold on thight. Run this commands in the CLI:
 
 ```bash
 git init
@@ -23,11 +23,13 @@ docker build -t bellotero-react .
 ```
 
 You're almost there.
-Next, fire up the project with the CLI command bellow and go to your browser in your local port 2001:
+Next, fire up the project with the CLI command bellow and go to your browser in your local host 2001:
 
 ```bash
 docker run -p 2001:80 bellotero-react
 ```
+
+_Here's the link for you browser: http://localhost:2001/_
 
 _Note: Be aware that the port 2001 in your localhost must be available._
 
