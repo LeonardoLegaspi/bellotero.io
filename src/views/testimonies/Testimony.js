@@ -30,7 +30,6 @@ function Testimony({ reviews }) {
         class: isForward ? "invisible-to-right" : "invisible-to-left",
       });
     } else {
-      console.log("ADIOS");
       setActiveReview({
         ...activeReview,
         index: isForward ? 0 : reviews.length - 1,
