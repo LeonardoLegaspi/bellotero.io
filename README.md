@@ -9,7 +9,6 @@ Let's begin.
 The first thing you need to do is get the code. For this, make a folder in your computer, open a CLI in the location of the folder you just created and hold on thight. Run this commands in the CLI:
 
 ```bash
-git init
 git clone https://github.com/LeonardoLegaspi/bellotero.io
 cd bellotero.io
 ```
